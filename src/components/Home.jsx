@@ -55,8 +55,9 @@ export default function Home() {
       setError(false);
       try {
         const route = (role=="candidate") ? "candidate-login" :"recruiter-login";
+        let lowercaseEmail = email.toLocaleLowerCase();
         const { data } = await axios.post(`/api/v1/${route}`, 
-          { email, password },
+          { email: lowercaseEmail, password },
           { headers: { "Content-type": "Application/json" } }
         );
         if (data.success === false) {
