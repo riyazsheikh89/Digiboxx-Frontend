@@ -77,6 +77,7 @@ function Signup() {
       onSubmit: async (values, action) => {
         try {
           const { confirmPassword, ...otherProps } = values;
+          otherProps.email = otherProps.email.toLocaleLowerCase();
           otherProps.avatar = avatar;
           const formData = new FormData();
           for (const key in otherProps) {

@@ -59,6 +59,9 @@ export default function Home() {
           { email, password },
           { headers: { "Content-type": "Application/json" } }
         );
+        if (data.success === false) {
+          throw data.err;
+        }
 
         localStorage.setItem("token", data.data);
         setUserInfo(prevUserInfo => ({
