@@ -39,7 +39,11 @@ const Candidate = () => {
           console.log("biodata: ", response.data);
           setHasSubmittedForm(true);
         } catch (error) {
-          console.log(error);
+            const {response} = error;
+            if (response.status == 400) {
+                alert(response.data.err);
+            }
+            console.log(response);
         }
     }
 
